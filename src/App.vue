@@ -1,9 +1,14 @@
 <template>
-  <HomeView> </HomeView>
+  <div>
+    <SideBar />
+    <router-view />
+  </div>
 </template>
 
 <script setup>
-import HomeView from './views/HomeView.vue'
+import SideBar from './components/SideBar.vue'
 </script>
 
-<style scoped></style>
+<style lang="scss">
+@import './styles/main.scss';
+</style>

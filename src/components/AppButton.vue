@@ -1,22 +1,19 @@
 <template>
-  <button
-    @click="handleButtonClick"
-    class="px-12 py-4 transition-all focus:outline-none active:outline-none shadow-card"
-  >
+  <button @click="handleButtonClick" :class="customClass">
     <slot></slot>
   </button>
 </template>
 
 <script setup>
-import { defineEmits } from 'vue'
+import { defineEmits, ref } from 'vue'
 
 const emit = defineEmits(['onClicked'])
-
+const customClass = ref('')
 const handleButtonClick = () => {
   emit('onClicked')
 }
 </script>
 
-<style lang="scss">
-@import '../styles//components//AppButton.scss';
+<style scoped lang="scss">
+@import '../styles/components/AppButton.scss';
 </style>
