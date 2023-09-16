@@ -1,12 +1,23 @@
 <template>
-  <div>
-    <div>
-      <input v-model="searchQuery" @keyup.enter="clearInput" placeholder="Search for a meal" />
-      <button @click="searchMeals">Get Results</button>
+  <div class="container">
+    <div class="bar">
+      <input
+        v-model="searchQuery"
+        @keyup.enter="searchMeals"
+        placeholder="Search for a meal"
+        list="meals"
+        @click="clearInput"
+      />
+      <datalist id="meals">
+        <option v-for="meal in store.searchedMeals" :key="meal.idMeal">{{ meal.strMeal }}</option>
+      </datalist>
+      <AppButton @click="searchMeals">
+        <span class="material-icons">search</span>
+      </AppButton>
     </div>
-    <div v-if="showResults">
+    <div v-if="showResults" class="results">
       <MealItem v-if="store.searchedMeals.length > 0" :meal="store.searchedMeals[0]" />
-      <p v-else>No matching meals found.</p>
+      <p class="no-matching" v-else>No matching meals found.</p>
     </div>
   </div>
 </template>
@@ -15,10 +26,12 @@
 import { ref } from 'vue'
 import { useRecipeStore } from '../stores/recipeStore'
 import MealItem from '../components/MealItem.vue'
+import AppButton from '../components/AppButton.vue'
 
 export default {
   components: {
-    MealItem
+    MealItem,
+    AppButton
   },
   setup() {
     const store = useRecipeStore()
@@ -29,18 +42,25 @@ export default {
       if (searchQuery.value !== '') {
         store.searchMeals(searchQuery.value)
         showResults.value = true
-        showResults.value - ''
       } else {
         showResults.value = false
       }
+    }
+
+    const clearInput = () => {
+      searchQuery.value = ''
     }
 
     return {
       store,
       searchQuery,
       searchMeals,
-      showResults
+      showResults,
+      clearInput
     }
   }
 }
 </script>
+<style lang="scss" scoped>
+@import '../assets/styles/pages/SearchingMeal.scss';
+</style>

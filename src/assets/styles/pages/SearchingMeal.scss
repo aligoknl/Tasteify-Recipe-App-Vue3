@@ -1,0 +1,44 @@
+@import '../variables';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2rem;
+  align-items: center;
+  padding-top: 4rem;
+
+  .no-matching {
+    margin-top: 2rem;
+  }
+  .bar {
+    display: flex;
+
+    input {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: 1px solid $button-background-color;
+      border-right: none;
+      border-radius: 0.25rem 0 0 0.25rem;
+      transition:
+        border-color 0.3s,
+        box-shadow 0.3s;
+
+      &:focus {
+        border-color: $primary;
+        box-shadow: 0 0 0 0.15rem $primary-alt;
+        outline: none;
+      }
+
+      &:hover {
+        border-color: #888;
+      }
+    }
+  }
+  .results {
+    margin-top: 2rem;
+  }
+}

@@ -1,16 +1,16 @@
 <template>
-  <div class="bg-white shadow rounded-xl hover:scale-105 transition-all">
-    <img
-      :src="meal.strMealThumb"
-      :alt="meal.strMeal"
-      class="rounded-t-xl w-full h-48 object-cover"
-    />
-    <div class="p-3">
-      <h3 class="font-bold">{{ meal.strMeal }}</h3>
-      <p class="mb-4">
-        {{ meal.strInstructions }}
-      </p>
+  <div class="meal-card">
+    <img :src="meal.strMealThumb" :alt="meal.strMeal" class="meal-image" />
+    <div class="meal-details">
+      <h3 class="meal-title">{{ meal.strMeal }}</h3>
+      <h5 class="meal-title">{{ meal.strCategory }}</h5>
+      <h6 class="meal-area">
+        {{ meal.strArea }}
+      </h6>
     </div>
+    <router-link class="meal-link" :to="{ name: 'mealDetails', params: { id: meal.idMeal } }"
+      >View Recipe</router-link
+    >
   </div>
 </template>
 
@@ -22,3 +22,7 @@ const { meal } = defineProps({
   }
 })
 </script>
+
+<style lang="scss" scoped>
+@import '../assets/styles/components/MealItem.scss';
+</style>

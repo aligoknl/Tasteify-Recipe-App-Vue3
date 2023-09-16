@@ -1,10 +1,10 @@
 <template>
   <div class="container">
-    <div class="">
-      <h1 class="">Random Meals</h1>
+    <h1 class="title">Random Meals</h1>
+    <div class="card-container">
+      <MealList :meals="meals" />
     </div>
-    <MealList :meals="meals" />
-    <AppButton @onClicked="getRandomMeal" customClass="mybtn" color="">Bring New Recipe</AppButton>
+    <AppButton @onClicked="getRandomMeal" customClass="mybtn">Bring New Recipe</AppButton>
   </div>
 </template>
 
@@ -20,6 +20,7 @@ const getRandomMeal = async () => {
   try {
     const { data } = await axiosClient.get('random.php')
     meals.value = [data.meals[0]]
+    console.log(meals.value)
   } catch (error) {
     console.error(error)
   }
@@ -28,6 +29,6 @@ onMounted(() => {
   getRandomMeal()
 })
 </script>
-<style lang="scss">
-@import '../styles/pages/HomeView.scss';
+<style lang="scss" scoped>
+@import '../assets/styles/pages/HomeView.scss';
 </style>

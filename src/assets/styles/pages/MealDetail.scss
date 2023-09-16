@@ -1,0 +1,53 @@
+@import '../variables';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-left: 2rem;
+  padding: 5rem;
+
+  .image {
+    max-width: 20rem;
+    max-height: 20rem;
+    width: 100%;
+    height: auto;
+    padding: 0.5rem;
+    background-color: white;
+  }
+  .recipe {
+    text-align: justify;
+    text-indent: 1rem;
+    letter-spacing: 0.1rem;
+    line-height: 1.5rem;
+
+    &::first-letter {
+      font-size: 40px;
+    }
+  }
+  .ingredient-container {
+    text-indent: 0.4rem;
+    letter-spacing: 0.1rem;
+    align-self: flex-start;
+    .ingredient-title {
+      margin-bottom: 1rem;
+    }
+    .ingredient {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      list-style: none;
+
+      .list-item {
+        border-bottom: 1px solid $primary;
+      }
+    }
+  }
+  .links {
+    display: flex;
+    justify-content: space-around;
+    gap: 3rem;
+  }
+}

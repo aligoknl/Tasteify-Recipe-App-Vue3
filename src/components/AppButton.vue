@@ -15,5 +15,5 @@ const handleButtonClick = () => {
 </script>
 
 <style scoped lang="scss">
-@import '../styles/components/AppButton.scss';
+@import '../assets/styles/components/AppButton.scss';
 </style>
