@@ -5,12 +5,12 @@
     </div>
 
     <div class="menu-toggle-wrap">
-      <button class="menu-toggle" @click="toggleMenu">
+      <button class="menu-toggle btn" @click="toggleMenu">
         <span class="material-icons">keyboard_double_arrow_right</span>
       </button>
     </div>
 
-    <h3>Menu</h3>
+    <h3 class="menu-title">Menu</h3>
     <div class="menu">
       <router-link to="/" class="button">
         <span class="material-icons">home</span>
@@ -19,15 +19,6 @@
       <router-link to="/searchMeal" class="button">
         <span class="material-icons">search</span>
         <span class="text">Search</span>
-      </router-link>
-    </div>
-
-    <div class="flex"></div>
-
-    <div class="menu">
-      <router-link to="/settings" class="button">
-        <span class="material-icons">description</span>
-        <span class="text">About</span>
       </router-link>
     </div>
   </aside>
@@ -45,5 +36,5 @@ const toggleMenu = () => {
 </script>
 
 <style lang="scss" scoped>
-@import '../styles/components/SideBar.scss';
+@import '../assets/styles/components/SideBar.scss';
 </style>

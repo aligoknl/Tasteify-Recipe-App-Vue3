@@ -8,7 +8,3 @@
 <script setup>
 import SideBar from './components/SideBar.vue'
 </script>
-
-<style lang="scss">
-@import './styles/main.scss';
-</style>
