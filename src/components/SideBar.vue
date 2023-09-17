@@ -18,7 +18,7 @@
         <span class="material-icons">home</span>
         <span class="text">Home</span>
       </router-link>
-      <router-link to="/searchMeal" class="button">
+      <router-link to="/searchMeal" class="button" data-cy="search-icon">
         <span class="material-icons">search</span>
         <span class="text">Search</span>
       </router-link>
