@@ -5,15 +5,15 @@
 </template>
 
 <script setup>
-import { defineEmits, ref } from 'vue'
+import { defineEmits } from 'vue'
 
 const emit = defineEmits(['onClicked'])
-const customClass = ref('')
+const { customClass } = defineProps(['customClass'])
 const handleButtonClick = () => {
   emit('onClicked')
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @import '../assets/styles/components/AppButton.scss';
 </style>

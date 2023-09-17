@@ -1,15 +1,15 @@
 <template>
   <div class="hero-content">
-    <h1 class="hero-title">{{ heroTitle }}</h1>
-    <h2 class="hero-subtitle">{{ heroSubtitle }}</h2>
+    <h1 ref="heroTitleRef" class="hero-title">{{ heroTitle }}</h1>
+    <h2 ref="heroSubtitleRef" class="hero-subtitle">{{ heroSubtitle }}</h2>
   </div>
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import { gsap } from 'gsap'
 
-const { heroTitle } = defineProps({
+const { heroTitle, heroSubtitle } = defineProps({
   heroTitle: {
     required: true,
     type: String
@@ -20,22 +20,22 @@ const { heroTitle } = defineProps({
   }
 })
 
+const heroTitleRef = ref(null)
+const heroSubtitleRef = ref(null)
+
 const timeline = gsap.timeline()
 
 const animateElements = () => {
-  const heroTitle = document.querySelector('.hero-title')
-  const heroSubtitle = document.querySelector('.hero-subtitle')
-
-  if (heroTitle || heroSubtitle) {
+  if (heroTitleRef.value || heroSubtitleRef.value) {
     timeline
-      .from(heroTitle, {
+      .from(heroTitleRef.value, {
         opacity: 0,
         y: -50,
         duration: 1,
         ease: 'power2.out'
       })
       .from(
-        heroSubtitle,
+        heroSubtitleRef.value,
         {
           opacity: 0,
           y: 50,
