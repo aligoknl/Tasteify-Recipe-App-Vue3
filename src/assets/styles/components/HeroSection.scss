@@ -1,0 +1,18 @@
+@import '../variables';
+
+.hero-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  .hero-title {
+    font-weight: bolder;
+    color: $dark;
+  }
+
+  .hero-subtitle {
+    font-weight: bold;
+    color: $dark-alt;
+  }
+}

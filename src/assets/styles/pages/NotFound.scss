@@ -1,0 +1,23 @@
+@import '../variables';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  padding-top: 3rem;
+
+  .title {
+    color: $primary;
+  }
+  .text {
+    color: $dark;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: 1rem;
+  }
+}

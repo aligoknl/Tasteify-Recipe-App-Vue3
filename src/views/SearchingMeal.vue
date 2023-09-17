@@ -4,12 +4,11 @@
       <div class="input-bar">
         <input
           v-model="searchQuery"
-          @keyup.enter="searchMeals"
           placeholder="Search for a meal"
           list="meals"
           @dblclick="clearInput"
         />
-        <AppButton @click="searchMeals" class="search-button">
+        <AppButton class="search-button">
           <span class="material-icons">search</span>
         </AppButton>
       </div>
@@ -25,90 +24,61 @@
       </div>
     </div>
     <div v-if="showResults" class="results">
-      <MealItem v-if="store.searchedMeals.length > 0" :meal="store.searchedMeals[0]" />
-      <p class="no-matching" v-else>No matching meals found.</p>
+      <MealItem
+        v-if="mealSelected && store.searchedMeals.length > 0"
+        :meal="store.searchedMeals[0]"
+      />
+      <p class="no-matching" v-if="store.searchedMeals.length === 0">No matching meals found.</p>
     </div>
+    <HeroSection
+      class="hero-section"
+      v-if="!showResults"
+      heroTitle="Discover the Art of Cooking"
+      heroSubtitle="Savor the Flavors of Delicious Cuisine"
+    />
   </div>
 </template>
 
-<script>
-import { ref, onMounted, watch } from 'vue'
-import { gsap } from 'gsap'
+<script setup>
+import { ref, watch } from 'vue'
 import { useRecipeStore } from '../stores/recipeStore'
 import MealItem from '../components/MealItem.vue'
 import AppButton from '../components/AppButton.vue'
-import { debounce } from '../api/debounce'
-export default {
-  components: {
-    MealItem,
-    AppButton
-  },
-  setup() {
-    const store = useRecipeStore()
-    const searchQuery = ref('')
-    const showResults = ref(false)
-    const showSuggestion = ref(false)
+import HeroSection from '../components/HeroSection.vue'
 
-    const searchMeals = () => {
-      if (searchQuery.value !== '') {
-        store.searchMeals(searchQuery.value)
-        showResults.value = true
-        showSuggestion.value = true
-      } else {
-        showResults.value = false
-      }
-    }
+const store = useRecipeStore()
+const searchQuery = ref('')
+const showResults = ref(false)
+const showSuggestion = ref(false)
+const mealSelected = ref(false)
 
-    const debouncedSearchMeals = debounce(searchMeals, 500)
-
-    watch(searchQuery, () => {
-      debouncedSearchMeals()
-    })
-
-    const selectAndClose = (meal) => {
-      searchQuery.value = meal.strMeal
-      showSuggestion.value = false
-    }
-
-    const selectMeal = (meal) => {
-      searchQuery.value = meal.strMeal
-      showResults.value = false
-      showSuggestion.value = false
-    }
-
-    const clearInput = () => {
-      searchQuery.value = ''
-    }
-
-    const animateSearchBar = () => {
-      gsap.from('.bar', {
-        opacity: 0,
-        y: -30,
-        duration: 1,
-        ease: 'power2.out'
-      })
-    }
-
-    onMounted(() => {
-      animateSearchBar()
-    })
-
-    return {
-      store,
-      searchQuery,
-      searchMeals,
-      showResults,
-      showSuggestion,
-      clearInput,
-      animateSearchBar,
-      debounce,
-      debouncedSearchMeals,
-      selectMeal,
-      selectAndClose
-    }
+const searchMeals = () => {
+  if (searchQuery.value !== '') {
+    store.searchMeals(searchQuery.value)
+    showResults.value = true
+    showSuggestion.value = true
+  } else {
+    showResults.value = false
   }
 }
+
+const selectAndClose = (meal) => {
+  mealSelected.value = true
+  searchQuery.value = meal.strMeal
+  setTimeout(() => {
+    showSuggestion.value = false
+  }, 1)
+}
+
+watch(searchQuery, () => {
+  searchMeals()
+})
+
+const clearInput = () => {
+  searchQuery.value = ''
+}
 </script>
+
 <style lang="scss" scoped>
 @import '../assets/styles/pages/SearchingMeal.scss';
 </style>

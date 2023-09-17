@@ -9,6 +9,7 @@
   background-image: url('/backgroundSearch.jpg');
   height: 100vh;
   background-size: cover;
+  min-width: 20rem;
 
   .no-matching {
     margin-top: 2rem;
@@ -49,8 +50,8 @@
     }
     .search-button {
       border: 0;
-      cursor: pointer;
       background-color: inherit;
+      pointer-events: none;
     }
     .suggestion-box {
       color: $light;
@@ -65,11 +66,12 @@
       padding: 8px 12px;
       cursor: pointer;
     }
-
-    .suggestion-item:hover {
-    }
   }
   .results {
     margin-top: 2rem;
+  }
+  .hero-section {
+    margin-top: 5rem;
+    padding: 1rem;
   }
 }

@@ -1,10 +1,10 @@
 <template>
   <div class="container">
     <div class="hero-background">
-      <div class="hero-content">
-        <h1 class="hero-title">Exploring Taste, One Recipe at a Time</h1>
-        <h2 class="hero-subtitle">Delightful Recipes Await Your Culinary Magic</h2>
-      </div>
+      <HeroSection
+        heroTitle="Exploring Taste, One Recipe at a Time"
+        heroSubtitle="Delightful Recipes Await Your Culinary Magic"
+      />
     </div>
     <div class="random-container">
       <div class="random-content">
@@ -24,6 +24,7 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import MealList from '../components/MealList.vue'
+import HeroSection from '../components/HeroSection.vue'
 import AppButton from '../components/AppButton.vue'
 import axiosClient from '../config/axiosClient.js'
 import { gsap } from 'gsap'
@@ -40,43 +41,25 @@ const getRandomMeal = async () => {
   }
 }
 
-onMounted(() => {
-  const heroTitle = document.querySelector('.hero-title')
-  const heroSubtitle = document.querySelector('.hero-subtitle')
+const animateElements = () => {
   const randomContainer = document.querySelector('.random-container')
-  if (heroTitle && heroSubtitle && randomContainer) {
-    timeline
-      .from(heroTitle, {
+  if (randomContainer) {
+    timeline.from(
+      randomContainer,
+      {
         opacity: 0,
-        y: -50,
-        duration: 1,
-        ease: 'power2.out'
-      })
-      .from(
-        heroSubtitle,
-        {
-          opacity: 0,
-          y: 50,
-          duration: 2,
-          ease: 'power2.out'
-        },
-        '-=0.5'
-      )
-      .from(
-        randomContainer,
-        {
-          opacity: 0,
-          y: -50,
-          duration: 1,
-          ease: 'power0.in'
-        },
-        '-=0.5'
-      )
-
+        y: 50,
+        duration: 3,
+        ease: 'power0.in'
+      },
+      '-=0.5'
+    )
     getRandomMeal()
-  } else {
-    console.error('Hero title or subtitle not found in the DOM.')
   }
+}
+
+onMounted(() => {
+  animateElements()
 })
 </script>
 
