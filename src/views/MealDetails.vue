@@ -29,6 +29,7 @@ import { computed, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import axiosClient from '../config/axiosClient'
 import AppButton from '../components/AppButton.vue'
+import { gsap } from 'gsap'
 
 const route = useRoute()
 const meal = ref({})
@@ -49,10 +50,20 @@ const openLink = (link) => {
   window.open(link, '_blank')
 }
 
+const animateContainer = () => {
+  gsap.from('.container', {
+    opacity: 0,
+    y: -30,
+    duration: 1,
+    ease: 'power2.out'
+  })
+}
+
 onMounted(() => {
   axiosClient.get(`lookup.php?i=${route.params.id}`).then(({ data }) => {
     meal.value = data.meals[0] || {}
   })
+  animateContainer()
 })
 </script>
 <style lang="scss" scoped>
