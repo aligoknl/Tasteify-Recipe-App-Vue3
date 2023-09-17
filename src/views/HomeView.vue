@@ -11,7 +11,9 @@
         <h1 class="random-title">Discover Your Daily Delight</h1>
         <h2 class="random-subtitle">Let's Roll the Dice for Dinner!</h2>
         <div class="random-button">
-          <AppButton @onClicked="getRandomMeal" customClass="mybtn">Bring New Recipe</AppButton>
+          <AppButton @onClicked="getRandomMeal" customClass="random-button"
+            >Bring New Recipe</AppButton
+          >
         </div>
       </div>
       <div class="random-card">

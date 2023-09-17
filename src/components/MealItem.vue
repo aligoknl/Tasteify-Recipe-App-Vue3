@@ -3,7 +3,7 @@
     <img :src="meal.strMealThumb" :alt="meal.strMeal" class="meal-image" />
     <div class="meal-details">
       <h3 class="meal-title">{{ meal.strMeal }}</h3>
-      <h5 class="meal-title">{{ meal.strCategory }}</h5>
+      <h5 class="meal-category">{{ meal.strCategory }}</h5>
       <h6 class="meal-area">
         {{ meal.strArea }}
       </h6>

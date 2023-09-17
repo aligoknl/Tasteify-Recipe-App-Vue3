@@ -37,7 +37,14 @@
       color: $dark;
     }
     .random-button {
-      width: auto;
+      background-color: $primary;
+      max-width: 10rem;
+      align-self: center;
+      border-radius: 0.5rem;
+
+      &:hover {
+        background-color: $primary-alt;
+      }
     }
   }
 }
