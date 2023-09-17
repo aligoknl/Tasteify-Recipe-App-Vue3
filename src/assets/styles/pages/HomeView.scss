@@ -5,12 +5,59 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 2rem 3rem 5rem;
   gap: 2rem;
+  position: relative;
+  overflow: hidden;
+  margin: 0 5rem;
 
-  .title {
-    text-align: center;
-    margin-top: 4rem;
-    color: $primary;
+  .hero-background {
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: bottom;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/background.jpg');
+
+    .hero-content {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+
+      .hero-title {
+        font-weight: bolder;
+        color: $dark;
+      }
+
+      .hero-subtitle {
+        font-weight: bold;
+        color: $dark-alt;
+      }
+    }
+  }
+  .random-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 3rem;
+
+    .random-content {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .random-button {
+      width: auto;
+    }
+  }
+}
+
+@media (min-width: $layout-breakpoint-small) {
+  .random-container {
+    flex-direction: row !important;
   }
 }

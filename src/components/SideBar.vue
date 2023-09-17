@@ -1,7 +1,9 @@
 <template>
   <aside :class="`${isExpanded ? 'is-expanded' : ''}`">
     <div class="logo">
-      <img :src="logoURL" alt="Vue" />
+      <router-link to="/">
+        <img :src="logoURL" alt="Tasteify" />
+      </router-link>
     </div>
 
     <div class="menu-toggle-wrap">
@@ -26,7 +28,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import logoURL from '../assets/logo.svg'
+import logoURL from '/logo.png'
 
 const isExpanded = ref(false)
 
