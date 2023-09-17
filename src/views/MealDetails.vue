@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1 class="title">{{ meal.strMeal }}</h1>
+    <h1 class="title" data-cy="meal-title">{{ meal.strMeal }}</h1>
     <img :src="meal.strMealThumb" :alt="meal.strMeal" class="image" />
     <div class="subtitles">
       <div><strong class="">Category:</strong> {{ meal.strCategory }}</div>
