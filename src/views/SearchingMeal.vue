@@ -50,6 +50,7 @@ const showSuggestion = ref(false)
 const mealSelected = ref(false)
 const selectedMeal = ref(null)
 
+// Function to search for meals based on the search query
 const searchMeals = () => {
   if (searchQuery.value !== '') {
     store.searchMeals(searchQuery.value)
@@ -60,6 +61,7 @@ const searchMeals = () => {
   }
 }
 
+// Function to select a meal from the suggestion list and close the suggestions
 const selectAndClose = (meal) => {
   mealSelected.value = true
   selectedMeal.value = meal
@@ -69,10 +71,12 @@ const selectAndClose = (meal) => {
   }, 1)
 }
 
+// Watch for changes in the searchQuery and trigger searchMeals function
 watch(searchQuery, () => {
   searchMeals()
 })
 
+// Function to clear the search input
 const clearInput = () => {
   searchQuery.value = ''
 }
