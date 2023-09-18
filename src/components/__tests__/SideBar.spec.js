@@ -1,25 +1,34 @@
 import { mount } from '@vue/test-utils'
 import { describe, it, expect } from 'vitest'
-
 import Sidebar from '@/components/Sidebar.vue'
+
+async function toggleSidebar(wrapper) {
+  await wrapper.find('.menu-toggle').trigger('click')
+}
 
 describe('Sidebar', () => {
   it('expands/collapses when the toggle button is clicked', async () => {
     const wrapper = mount(Sidebar)
 
+    // Check if the sidebar is expanded
+    const expectSidebarExpanded = () => {
+      expect(wrapper.classes()).toContain('is-expanded')
+    }
+
+    // Check if the sidebar is collapsed
+    const expectSidebarCollapsed = () => {
+      expect(wrapper.classes()).not.toContain('is-expanded')
+    }
+
     // Check if the sidebar starts as collapsed
-    expect(wrapper.classes()).not.toContain('is-expanded')
+    expectSidebarCollapsed()
 
-    // Click the toggle button
-    await wrapper.find('.menu-toggle.btn').trigger('click')
+    // Toggle the sidebar and check if it becomes expanded
+    await toggleSidebar(wrapper)
+    expectSidebarExpanded()
 
-    // Check if the sidebar becomes expanded
-    expect(wrapper.classes()).toContain('is-expanded')
-
-    // Click the toggle button again
-    await wrapper.find('.menu-toggle.btn').trigger('click')
-
-    // Check if the sidebar becomes collapsed again
-    expect(wrapper.classes()).not.toContain('is-expanded')
+    // Toggle the sidebar again and check if it becomes collapsed
+    await toggleSidebar(wrapper)
+    expectSidebarCollapsed()
   })
 })

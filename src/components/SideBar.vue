@@ -17,6 +17,10 @@
         <span class="material-icons">search</span>
         <span class="text">Search</span></MealLink
       >
+      <MealLink :customClass="'button'" :routeName="'categories'" data-cy="category-icon">
+        <span class="material-icons">category</span>
+        <span class="text">Categories</span></MealLink
+      >
     </div>
   </aside>
 </template>
@@ -27,8 +31,10 @@ import MealLink from './MealLink.vue'
 import AppButton from './AppButton.vue'
 import logoURL from '/logo.png'
 
+// A reactive variable to track whether the sidebar is expanded or collapsed
 const isExpanded = ref(false)
 
+// Function to toggle the menu's expanded state
 const toggleMenu = () => {
   isExpanded.value = !isExpanded.value
 }

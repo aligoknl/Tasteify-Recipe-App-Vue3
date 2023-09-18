@@ -10,19 +10,14 @@ import { onMounted, ref } from 'vue'
 import { gsap } from 'gsap'
 
 const { heroTitle, heroSubtitle } = defineProps({
-  heroTitle: {
-    required: true,
-    type: String
-  },
-  heroSubtitle: {
-    required: false,
-    type: String
-  }
+  heroTitle: String,
+  heroSubtitle: String
 })
 
 const heroTitleRef = ref(null)
 const heroSubtitleRef = ref(null)
 
+// Create a timeline for animations using GSAP
 const timeline = gsap.timeline()
 
 const animateElements = () => {
@@ -34,6 +29,7 @@ const animateElements = () => {
         duration: 1,
         ease: 'power2.out'
       })
+      // Animate the hero subtitle with a delay
       .from(
         heroSubtitleRef.value,
         {
@@ -47,6 +43,7 @@ const animateElements = () => {
   }
 }
 
+// Run the animation when the component is mounted
 onMounted(() => {
   animateElements()
 })

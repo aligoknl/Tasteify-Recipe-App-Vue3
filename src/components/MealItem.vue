@@ -17,10 +17,7 @@
 <script setup>
 import MealLink from './MealLink.vue'
 const { meal } = defineProps({
-  meal: {
-    required: true,
-    type: Object
-  }
+  meal: Object
 })
 </script>
 
