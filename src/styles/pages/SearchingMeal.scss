@@ -34,6 +34,7 @@
       align-items: center;
       width: 90%;
     }
+
     input {
       background: transparent;
       flex: 1;
@@ -48,11 +49,13 @@
         opacity: 0.5;
       }
     }
+
     .search-button {
       border: 0;
       background-color: inherit;
       pointer-events: none;
     }
+
     .suggestion-box {
       color: $light;
       width: 90%;
@@ -67,9 +70,11 @@
       cursor: pointer;
     }
   }
+
   .results {
     margin-top: 2rem;
   }
+
   .hero-section {
     margin-top: 5rem;
     padding: 1rem;

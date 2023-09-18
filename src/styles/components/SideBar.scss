@@ -15,6 +15,7 @@ aside {
 
   .logo {
     margin: 1rem 0;
+
     img {
       width: 4rem;
     }
@@ -26,14 +27,13 @@ aside {
     margin-bottom: 1rem;
     position: relative;
     top: 0;
-    left: -1rem;
+    left: -2rem;
     transition: 0.5s ease-in-out;
 
-    .btn {
-      background-color: $dark;
-    }
     .menu-toggle {
       transition: 0.5s ease-in-out;
+      background-color: $dark;
+      padding: 0rem;
 
       .material-icons {
         font-size: 2rem;
@@ -84,6 +84,7 @@ aside {
         color: $light;
         transition: 0.2s ease-in-out;
       }
+
       .text {
         color: $light;
         transition: 0.2s ease-in-out;
@@ -121,10 +122,12 @@ aside {
 
     .logo {
       margin: 1rem -1.2rem;
+
       img {
         width: 6rem;
       }
     }
+
     .menu-title,
     .button .text {
       opacity: 1;

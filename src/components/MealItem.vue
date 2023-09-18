@@ -8,13 +8,14 @@
         {{ meal.strArea }}
       </h6>
     </div>
-    <router-link class="meal-link" :to="{ name: 'mealDetails', params: { id: meal.idMeal } }"
-      >View Recipe</router-link
+    <MealLink :customClass="'meal-link'" :id="meal.idMeal" :routeName="'mealDetails'"
+      >View Recipe</MealLink
     >
   </div>
 </template>
 
 <script setup>
+import MealLink from './MealLink.vue'
 const { meal } = defineProps({
   meal: {
     required: true,
@@ -24,5 +25,5 @@ const { meal } = defineProps({
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/styles/components/MealItem.scss';
+@import '../styles/components/MealItem.scss';
 </style>

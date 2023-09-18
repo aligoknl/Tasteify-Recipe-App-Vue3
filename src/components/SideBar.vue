@@ -1,33 +1,30 @@
 <template>
   <aside :class="`${isExpanded ? 'is-expanded' : ''}`">
     <div class="logo">
-      <router-link to="/">
-        <img :src="logoURL" alt="Tasteify" />
-      </router-link>
+      <MealLink :routeName="'home'"> <img :src="logoURL" alt="Tasteify" /> </MealLink>
     </div>
-
     <div class="menu-toggle-wrap">
-      <button class="menu-toggle btn" @click="toggleMenu">
+      <AppButton @onClicked="toggleMenu" customClass="menu-toggle">
         <span class="material-icons">keyboard_double_arrow_right</span>
-      </button>
+      </AppButton>
     </div>
-
     <h3 class="menu-title">Menu</h3>
     <div class="menu">
-      <router-link to="/" class="button">
-        <span class="material-icons">home</span>
-        <span class="text">Home</span>
-      </router-link>
-      <router-link to="/searchMeal" class="button" data-cy="search-icon">
+      <MealLink :customClass="'button'" :routeName="'home'">
+        <span class="material-icons">home</span> <span class="text">Home</span></MealLink
+      >
+      <MealLink :customClass="'button'" :routeName="'searching'" data-cy="search-icon">
         <span class="material-icons">search</span>
-        <span class="text">Search</span>
-      </router-link>
+        <span class="text">Search</span></MealLink
+      >
     </div>
   </aside>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import MealLink from './MealLink.vue'
+import AppButton from './AppButton.vue'
 import logoURL from '/logo.png'
 
 const isExpanded = ref(false)
@@ -38,5 +35,5 @@ const toggleMenu = () => {
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/styles/components/SideBar.scss';
+@import '../styles/components/SideBar.scss';
 </style>

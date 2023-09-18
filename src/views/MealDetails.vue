@@ -3,8 +3,8 @@
     <h1 class="title" data-cy="meal-title">{{ meal.strMeal }}</h1>
     <img :src="meal.strMealThumb" :alt="meal.strMeal" class="image" />
     <div class="subtitles">
-      <div><strong class="">Category:</strong> {{ meal.strCategory }}</div>
-      <div><strong class="">Origin:</strong> {{ meal.strArea }}</div>
+      <div><strong class="subtitle">Category:</strong> {{ meal.strCategory }}</div>
+      <div><strong class="subtitle">Origin:</strong> {{ meal.strArea }}</div>
     </div>
     <div class="recipe">
       {{ meal.strInstructions }}
@@ -18,8 +18,12 @@
       </ul>
     </div>
     <div class="links">
-      <AppButton @onClicked="openLink(meal.strSource)"> View Original Source </AppButton>
-      <AppButton @onClicked="openLink(meal.strYoutube)"> Watch on Youtube </AppButton>
+      <AppButton v-if="meal.strSource" @onClicked="openLink(meal.strSource)">
+        View Original Source
+      </AppButton>
+      <AppButton v-if="meal.strYoutube" @onClicked="openLink(meal.strYoutube)">
+        Watch on Youtube
+      </AppButton>
     </div>
   </div>
 </template>
@@ -67,5 +71,5 @@ onMounted(() => {
 })
 </script>
 <style lang="scss" scoped>
-@import '../assets/styles/pages/MealDetail.scss';
+@import '../styles/pages/MealDetail.scss';
 </style>
