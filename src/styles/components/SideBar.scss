@@ -15,6 +15,7 @@ aside {
 
   .logo {
     margin: 1rem 0;
+
     img {
       width: 4rem;
     }
@@ -83,6 +84,7 @@ aside {
         color: $light;
         transition: 0.2s ease-in-out;
       }
+
       .text {
         color: $light;
         transition: 0.2s ease-in-out;
@@ -120,10 +122,12 @@ aside {
 
     .logo {
       margin: 1rem -1.2rem;
+
       img {
         width: 6rem;
       }
     }
+
     .menu-title,
     .button .text {
       opacity: 1;
