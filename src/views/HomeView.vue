@@ -66,5 +66,5 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/styles/pages/HomeView.scss';
+@import '../styles/pages/HomeView.scss';
 </style>

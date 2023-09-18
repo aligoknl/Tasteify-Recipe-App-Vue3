@@ -53,5 +53,5 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/styles/components/HeroSection.scss';
+@import '../styles/components/HeroSection.scss';
 </style>

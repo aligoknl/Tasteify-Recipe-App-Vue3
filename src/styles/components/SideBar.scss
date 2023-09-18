@@ -26,14 +26,13 @@ aside {
     margin-bottom: 1rem;
     position: relative;
     top: 0;
-    left: -1rem;
+    left: -2rem;
     transition: 0.5s ease-in-out;
 
-    .btn {
-      background-color: $dark;
-    }
     .menu-toggle {
       transition: 0.5s ease-in-out;
+      background-color: $dark;
+      padding: 0rem;
 
       .material-icons {
         font-size: 2rem;

@@ -9,6 +9,14 @@
   margin-left: 2rem;
   padding: 5rem;
 
+  .title {
+    color: $primary;
+  }
+
+  .subtitle {
+    color: $dark;
+  }
+
   .image {
     max-width: 20rem;
     max-height: 20rem;
@@ -25,14 +33,17 @@
 
     &::first-letter {
       font-size: 40px;
+      color: $dark-alt;
     }
   }
   .ingredient-container {
     text-indent: 0.4rem;
     letter-spacing: 0.1rem;
     align-self: flex-start;
+
     .ingredient-title {
       margin-bottom: 1rem;
+      color: $dark-alt;
     }
     .ingredient {
       display: flex;

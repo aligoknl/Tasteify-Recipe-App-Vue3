@@ -4,5 +4,9 @@ Cypress.Commands.add('clickButtonAndCheckRecipeChange', () => {
 })
 
 Cypress.Commands.add('commonSetup', () => {
-  cy.visit('http://localhost:5173')
+  cy.visit(Cypress.env('localURL'))
+})
+
+Cypress.Commands.add('getByDataId', (id) => {
+  return cy.get(`[data-cy="${id}"]`)
 })

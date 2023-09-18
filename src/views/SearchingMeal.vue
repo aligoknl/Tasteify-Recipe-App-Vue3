@@ -24,10 +24,7 @@
       </div>
     </div>
     <div v-if="showResults" class="results">
-      <MealItem
-        v-if="mealSelected && store.searchedMeals.length > 0"
-        :meal="store.searchedMeals[0]"
-      />
+      <MealItem v-if="mealSelected && store.searchedMeals.length > 0" :meal="selectedMeal" />
       <p class="no-matching" v-if="store.searchedMeals.length === 0">No matching meals found.</p>
     </div>
     <HeroSection
@@ -51,6 +48,7 @@ const searchQuery = ref('')
 const showResults = ref(false)
 const showSuggestion = ref(false)
 const mealSelected = ref(false)
+const selectedMeal = ref(null)
 
 const searchMeals = () => {
   if (searchQuery.value !== '') {
@@ -64,6 +62,7 @@ const searchMeals = () => {
 
 const selectAndClose = (meal) => {
   mealSelected.value = true
+  selectedMeal.value = meal
   searchQuery.value = meal.strMeal
   setTimeout(() => {
     showSuggestion.value = false
@@ -80,5 +79,5 @@ const clearInput = () => {
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/styles/pages/SearchingMeal.scss';
+@import '../styles/pages/SearchingMeal.scss';
 </style>

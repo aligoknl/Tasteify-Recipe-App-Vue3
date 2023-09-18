@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
 import { describe, it, expect } from 'vitest'
 
-import Sidebar from '@/components/Sidebar.vue' // Import your Sidebar component
+import Sidebar from '@/components/Sidebar.vue'
 
 describe('Sidebar', () => {
   it('expands/collapses when the toggle button is clicked', async () => {
