@@ -18,7 +18,7 @@ This is a Vue.js application for exploring and discovering various recipes. User
 - View detailed information for each meal, including ingredients and instructions.
 - Direct links to the original source and video tutorials (if available).
 
-## 3. Application
+## 4. Application
 
 - API Source: [TheMealDB](https://www.themealdb.com/api.php)
 - This project was created using the following technologies and tools:
@@ -29,6 +29,65 @@ This is a Vue.js application for exploring and discovering various recipes. User
   - Vite: Build tool for fast development and building.
   - Cypress: End-to-end testing framework for web apps.
   - Vitest: Testing library for Vue 3 apps, improving testing capabilities.
+
+## 5. App Tree
+
+````plaintext
+cypress
+├── config
+├── e2e
+│ ├── HomeView.cy.js
+│ ├── MealCategory.cy.js
+│ └── SearchingMeal.cy.js
+├── support
+│ └── commands.js
+public
+├── images
+src
+├── api
+│ └── fetchData.js
+├── components
+│ ├── __tests__
+│ │ ├── AppButton.spec.js
+│ │ ├── MealItem.spec.js
+│ │ └── Sidebar.spec.js
+│ ├── AnimatedContainer.vue
+│ ├── AppButton.vue
+│ ├── HeroSection.vue
+│ ├── MealItem.vue
+│ ├── MealLink.vue
+│ ├── MealList.vue
+│ └── Sidebar.vue
+├── config
+│ └── axiosClient.js
+├── router
+│ └── index.js
+├── stores
+│ └── recipeStore.js
+├── styles
+│ ├── components
+│ │ ├── AppButton.scss
+│ │ ├── HeroSection.scss
+│ │ ├── MealItem.scss
+│ │ └── Sidebar.scss
+│ ├── pages
+│ │ ├── Homeview.scss
+│ │ ├── MealByCategory.scss
+│ │ ├── MealCategories.scss
+│ │ ├── MealDetail.scss
+│ │ ├── NotFound.scss
+│ │ └── SearchingMeal.scss
+│ ├── _variables.scss
+│ └── main.scss
+├── views
+│ ├── Homeview.vue
+│ ├── MealByCategory.vue
+│ ├── MealCategories.vue
+│ ├── MealDetails.vue
+│ ├── NotFound.vue
+│ └── SearchingMeal.vue
+App.vue
+main.js
 
 ## Project Setup
 
@@ -75,3 +134,4 @@ npm run test:e2e
 ```sh
 npm run lint
 ```
+````
