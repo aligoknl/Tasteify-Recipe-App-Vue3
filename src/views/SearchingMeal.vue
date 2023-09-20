@@ -79,6 +79,8 @@ watch(searchQuery, () => {
 // Function to clear the search input
 const clearInput = () => {
   searchQuery.value = ''
+  showResults.value = false
+  showSuggestion.value = false
 }
 </script>
 
