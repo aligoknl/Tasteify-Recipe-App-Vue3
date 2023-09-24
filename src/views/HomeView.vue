@@ -12,7 +12,7 @@
           <h1 class="random-title">Discover Your Daily Delight</h1>
           <h2 class="random-subtitle">Let's Roll the Dice for Dinner!</h2>
           <div class="random-button">
-            <AppButton @onClicked="getRandomMeal" customClass="random-button"
+            <AppButton @onClicked="getRandomMeal()" customClass="random-button"
               >Bring New Recipe</AppButton
             >
           </div>
@@ -30,19 +30,16 @@ import { onMounted, ref } from 'vue'
 import MealList from '../components/MealList.vue'
 import HeroSection from '../components/HeroSection.vue'
 import AppButton from '../components/AppButton.vue'
-import axiosClient from '../config/axiosClient.js'
 import AnimatedContainer from '../components/AnimatedContainer.vue'
+import { useRecipeStore } from '../stores/recipeStore'
 
+const store = useRecipeStore()
 const meals = ref([])
 
-// Function to fetch a random meal from the API
-const getRandomMeal = async () => {
-  try {
-    const { data } = await axiosClient.get('random.php')
-    meals.value = [data.meals[0]]
-  } catch (error) {
-    console.error(error)
-  }
+const getRandomMeal = () => {
+  store.getRandomMeal()
+  meals.value = store.randomMeal
+  console.log('mounted')
 }
 
 // Fetch a random meal when the component is mounted

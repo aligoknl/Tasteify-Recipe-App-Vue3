@@ -1,30 +1,32 @@
 <template>
   <AnimatedContainer :animatedContainer="'container'">
-    <div class="container">
-      <h1 class="title" data-cy="meal-title">{{ meal.strMeal }}</h1>
-      <img :src="meal.strMealThumb" :alt="meal.strMeal" class="image" />
-      <div class="subtitles">
-        <div><strong class="subtitle">Category:</strong> {{ meal.strCategory }}</div>
-        <div><strong class="subtitle">Origin:</strong> {{ meal.strArea }}</div>
-      </div>
-      <div class="recipe">
-        {{ meal.strInstructions }}
-      </div>
-      <div class="ingredient-container">
-        <h2 class="ingredient-title">Ingredients</h2>
-        <ul class="ingredient">
-          <li class="list-item" v-for="(ingredient, index) of filteredIngredients" :key="index">
-            {{ ingredient }}
-          </li>
-        </ul>
-      </div>
-      <div class="links">
-        <AppButton v-if="meal.strSource" @onClicked="openLink(meal.strSource)">
-          View Original Source
-        </AppButton>
-        <AppButton v-if="meal.strYoutube" @onClicked="openLink(meal.strYoutube)">
-          Watch on Youtube
-        </AppButton>
+    <div class="mainContainer">
+      <div class="container">
+        <h1 class="title" data-cy="meal-title">{{ meal.strMeal }}</h1>
+        <img :src="meal.strMealThumb" :alt="meal.strMeal" class="image" />
+        <div class="subtitles">
+          <div><strong class="subtitle">Category:</strong> {{ meal.strCategory }}</div>
+          <div><strong class="subtitle">Origin:</strong> {{ meal.strArea }}</div>
+        </div>
+        <div class="recipe">
+          {{ meal.strInstructions }}
+        </div>
+        <div class="ingredient-container">
+          <h2 class="ingredient-title">Ingredients</h2>
+          <ul class="ingredient">
+            <li class="list-item" v-for="(ingredient, index) of filteredIngredients" :key="index">
+              {{ ingredient }}
+            </li>
+          </ul>
+        </div>
+        <div class="links">
+          <AppButton v-if="meal.strSource" @onClicked="openLink(meal.strSource)">
+            View Original Source
+          </AppButton>
+          <AppButton v-if="meal.strYoutube" @onClicked="openLink(meal.strYoutube)">
+            Watch on Youtube
+          </AppButton>
+        </div>
       </div>
     </div>
   </AnimatedContainer>

@@ -24,8 +24,8 @@
       </div>
     </div>
     <div v-if="showResults" class="results">
-      <MealItem v-if="mealSelected && store.searchedMeals.length > 0" :meal="selectedMeal" />
-      <p class="no-matching" v-if="store.searchedMeals.length === 0">No matching meals found.</p>
+      <MealItem v-if="showResultItem()" :meal="selectedMeal" />
+      <p class="no-matching" v-if="showNoResult()">No matching meals found.</p>
     </div>
     <HeroSection
       class="hero-section"
@@ -37,7 +37,7 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
+import { nextTick, ref, watch } from 'vue'
 import { useRecipeStore } from '../stores/recipeStore'
 import MealItem from '../components/MealItem.vue'
 import AppButton from '../components/AppButton.vue'
@@ -66,9 +66,10 @@ const selectAndClose = (meal) => {
   mealSelected.value = true
   selectedMeal.value = meal
   searchQuery.value = meal.strMeal
-  setTimeout(() => {
+
+  nextTick(() => {
     showSuggestion.value = false
-  }, 1)
+  })
 }
 
 // Watch for changes in the searchQuery and trigger searchMeals function
@@ -81,6 +82,14 @@ const clearInput = () => {
   searchQuery.value = ''
   showResults.value = false
   showSuggestion.value = false
+}
+
+const showResultItem = () => {
+  return mealSelected.value && store.searchedMeals.length > 0
+}
+
+const showNoResult = () => {
+  return store.searchedMeals.length === 0
 }
 </script>
 
