@@ -10,6 +10,7 @@
 
   .title {
     color: $primary;
+    text-align: center;
   }
 
   .subtitle {
@@ -60,5 +61,13 @@
     display: flex;
     justify-content: space-around;
     gap: 3rem;
+  }
+}
+
+@media (min-width: $layout-breakpoint-small) {
+  .container {
+    max-width: 50rem;
+    margin: auto;
+    padding: 2rem 0;
   }
 }

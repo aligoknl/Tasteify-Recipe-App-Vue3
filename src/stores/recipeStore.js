@@ -6,7 +6,8 @@ export const useRecipeStore = defineStore({
   state: () => ({
     searchedMeals: [],
     mealsByCategory: [],
-    categories: []
+    categories: [],
+    randomMeal: []
   }),
   actions: {
     async searchMeals(keyword) {
@@ -17,6 +18,14 @@ export const useRecipeStore = defineStore({
       const meals = await fetchData(`filter.php?c=${category}`)
       this.setMealsByCategory(meals)
     },
+    async getRandomMeal() {
+      try {
+        const data = await fetchData('random.php')
+        this.setRandomMeal(data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
     setSearchedMeals(meals) {
       this.searchedMeals = meals || []
     },
@@ -25,6 +34,9 @@ export const useRecipeStore = defineStore({
     },
     setCategories(categories) {
       this.categories = categories || []
+    },
+    setRandomMeal(randomMeal) {
+      this.randomMeal = randomMeal || []
     }
   }
 })
