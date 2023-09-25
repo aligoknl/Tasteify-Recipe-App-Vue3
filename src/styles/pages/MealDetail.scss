@@ -27,13 +27,20 @@
   }
   .recipe {
     text-align: justify;
-    text-indent: 1rem;
     letter-spacing: 0.1rem;
     line-height: 1.5rem;
 
-    &::first-letter {
-      font-size: 40px;
-      color: $dark-alt;
+    .instructions-title {
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 1rem;
     }
   }
   .ingredient-container {
@@ -43,7 +50,6 @@
 
     .ingredient-title {
       margin-bottom: 1rem;
-      color: $dark-alt;
     }
     .ingredient {
       display: flex;

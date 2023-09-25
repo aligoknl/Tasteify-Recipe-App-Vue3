@@ -9,7 +9,12 @@
           <div><strong class="subtitle">Origin:</strong> {{ meal.strArea }}</div>
         </div>
         <div class="recipe">
-          {{ meal.strInstructions }}
+          <h2 class="instructions-title">How to Make {{ meal.strMeal }}</h2>
+          <ul>
+            <li v-for="(sentence, index) in instructionSentences" :key="index">
+              {{ index + 1 }}. {{ sentence }}
+            </li>
+          </ul>
         </div>
         <div class="ingredient-container">
           <h2 class="ingredient-title">Ingredients</h2>
@@ -43,6 +48,19 @@ import { useRecipeStore } from '../stores/recipeStore'
 const store = useRecipeStore()
 const route = useRoute()
 const meal = ref({})
+
+// Function to split the instruction text into sentences
+const splitInstructionsIntoSentences = (instructions) => {
+  if (!instructions) {
+    return []
+  }
+  // Split the text into sentences using punctuation (., !, ?) as delimiters
+  return instructions.split(/[.!?]/).filter((sentence) => sentence.trim() !== '')
+}
+
+const instructionSentences = computed(() => {
+  return splitInstructionsIntoSentences(meal.value.strInstructions)
+})
 
 // Computed property to filter and format ingredients
 const filteredIngredients = computed(() => {
