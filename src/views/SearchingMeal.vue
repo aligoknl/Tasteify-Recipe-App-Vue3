@@ -82,6 +82,7 @@ const clearInput = () => {
   searchQuery.value = ''
   showResults.value = false
   showSuggestion.value = false
+  mealSelected.value = false
 }
 
 const showResultItem = () => {

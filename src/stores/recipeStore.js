@@ -7,23 +7,48 @@ export const useRecipeStore = defineStore({
     searchedMeals: [],
     mealsByCategory: [],
     categories: [],
-    randomMeal: []
+    randomMeal: [],
+    meal: []
   }),
   actions: {
     async searchMeals(keyword) {
-      const meals = await fetchData(`search.php?s=${keyword}`)
-      this.setSearchedMeals(meals)
+      try {
+        const meals = await fetchData(`search.php?s=${keyword}`)
+        this.setSearchedMeals(meals)
+      } catch (error) {
+        console.error('An error occurred while searching meals:', error)
+      }
     },
     async searchMealsByCategory(category) {
-      const meals = await fetchData(`filter.php?c=${category}`)
-      this.setMealsByCategory(meals)
+      try {
+        const meals = await fetchData(`filter.php?c=${category}`)
+        this.setMealsByCategory(meals)
+      } catch (error) {
+        console.error('An error occurred while fetching meals by category:', error)
+      }
     },
     async getRandomMeal() {
       try {
         const data = await fetchData('random.php')
         this.setRandomMeal(data)
       } catch (error) {
-        console.error(error)
+        console.error('An error occurred while fetching a random meal:', error)
+      }
+    },
+    async getCategories() {
+      try {
+        const response = await fetchData('list.php?c=list')
+        this.setCategories(response)
+      } catch (error) {
+        console.error('An error occurred while fetching categories:', error)
+      }
+    },
+    async getMealDetail(id) {
+      try {
+        const meal = await fetchData(`lookup.php?i=${id}`)
+        this.setMealDetail(meal[0])
+      } catch (error) {
+        console.error('An error occurred while fetching meal details:', error)
       }
     },
     setSearchedMeals(meals) {
@@ -32,11 +57,14 @@ export const useRecipeStore = defineStore({
     setMealsByCategory(meals) {
       this.mealsByCategory = meals || []
     },
+    setRandomMeal(randomMeal) {
+      this.randomMeal = randomMeal || []
+    },
     setCategories(categories) {
       this.categories = categories || []
     },
-    setRandomMeal(randomMeal) {
-      this.randomMeal = randomMeal || []
+    setMealDetail(meal) {
+      this.meal = meal || []
     }
   }
 })

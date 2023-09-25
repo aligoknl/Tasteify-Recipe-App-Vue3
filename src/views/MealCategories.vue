@@ -7,7 +7,7 @@
     />
     <AnimatedContainer :animatedContainer="'categories'">
       <div class="categories">
-        <div class="category" v-for="category in flattenedCategories" :key="category.strCategory">
+        <div class="category" v-for="category in categories" :key="category.strCategory">
           <MealLink
             :customClass="'category-link'"
             :id="category.strCategory"
@@ -23,7 +23,6 @@
 
 <script setup>
 import { onMounted, ref } from 'vue'
-import axiosClient from '../config/axiosClient'
 import MealLink from '../components/MealLink.vue'
 import HeroSection from '../components/HeroSection.vue'
 import AnimatedContainer from '../components/AnimatedContainer.vue'
@@ -31,20 +30,16 @@ import { useRecipeStore } from '../stores/recipeStore'
 
 const store = useRecipeStore()
 
-// Create a computed property for flattened categories
-const flattenedCategories = ref([])
+const categories = ref([])
 
-// Fetch and populate categories from the API
-onMounted(async () => {
-  try {
-    const response = await axiosClient.get(`list.php?c=list`)
-    const categoriesData = response.data.meals.flatMap((category) => category)
-    flattenedCategories.value = categoriesData
-    // Update the store's state with the fetched data
-    store.setCategories(categoriesData)
-  } catch (error) {
-    console.error('An error occurred while fetching categories:', error)
-  }
+// Fetch and populate all categories
+const fetchCategories = async () => {
+  await store.getCategories()
+  categories.value = store.categories
+}
+
+onMounted(() => {
+  fetchCategories()
 })
 </script>
 

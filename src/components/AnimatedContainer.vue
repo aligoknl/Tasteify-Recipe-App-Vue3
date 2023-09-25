@@ -20,7 +20,7 @@ const animateElement = () => {
   timeline.from(container.value, {
     opacity: 0,
     y: -50,
-    duration: 2,
+    duration: 1,
     ease: 'power2.out'
   })
 }

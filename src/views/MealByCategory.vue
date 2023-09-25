@@ -7,9 +7,7 @@
       />
     </div>
     <AnimatedContainer :animatedContainer="'meal-cards'">
-      <div class="meal-cards">
-        <MealList class="meal-cards" :meals="meals" />
-      </div>
+      <MealList class="meal-cards" :meals="meals" />
     </AnimatedContainer>
   </div>
 </template>
@@ -28,13 +26,13 @@ const route = useRoute()
 const meals = ref([])
 
 // Fetch and populate meals based on the selected category using the store action
-onMounted(async () => {
-  try {
-    await store.searchMealsByCategory(route.params.id)
-    meals.value = store.mealsByCategory
-  } catch (error) {
-    console.error(error)
-  }
+const fetchByCategories = async () => {
+  await store.searchMealsByCategory(route.params.id)
+  meals.value = store.mealsByCategory
+}
+
+onMounted(() => {
+  fetchByCategories()
 })
 </script>
 

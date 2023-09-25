@@ -3,16 +3,14 @@
 .container {
   display: flex;
   flex-direction: column;
-  margin: 0 5rem;
+  padding: 4rem 5rem;
   align-items: center;
-  padding-top: 4rem;
   height: auto;
   min-width: 100vw;
   min-height: 100vh;
-  overflow: hidden;
 
   .hero-background {
-    margin: 5rem 0;
+    margin: 3rem 0;
   }
   .meal-cards {
     display: flex;
@@ -20,6 +18,5 @@
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    overflow: auto;
   }
 }
