@@ -26,7 +26,7 @@ const animateElements = () => {
       .from(heroTitleRef.value, {
         opacity: 0,
         y: -50,
-        duration: 1,
+        duration: 1.5,
         ease: 'power2.out'
       })
       // Animate the hero subtitle with a delay

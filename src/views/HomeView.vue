@@ -36,10 +36,13 @@ import { useRecipeStore } from '../stores/recipeStore'
 const store = useRecipeStore()
 const meals = ref([])
 
-const getRandomMeal = () => {
-  store.getRandomMeal()
-  meals.value = store.randomMeal
-  console.log('mounted')
+const getRandomMeal = async () => {
+  try {
+    await store.getRandomMeal()
+    meals.value = store.randomMeal
+  } catch (error) {
+    console.error(error)
+  }
 }
 
 // Fetch a random meal when the component is mounted

@@ -1,5 +1,5 @@
 <template>
-  <aside :class="`${isExpanded ? 'is-expanded' : ''}`">
+  <aside :class="{ 'is-expanded': isExpanded }">
     <div class="logo">
       <MealLink :routeName="'home'"> <img :src="logoURL" alt="Tasteify" /> </MealLink>
     </div>

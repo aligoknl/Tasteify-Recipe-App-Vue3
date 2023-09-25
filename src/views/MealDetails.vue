@@ -35,10 +35,12 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import axiosClient from '../config/axiosClient'
+//import axiosClient from '../config/axiosClient'
 import AppButton from '../components/AppButton.vue'
 import AnimatedContainer from '../components/AnimatedContainer.vue'
+import { useRecipeStore } from '../stores/recipeStore'
 
+const store = useRecipeStore()
 const route = useRoute()
 const meal = ref({})
 
@@ -59,17 +61,14 @@ const openLink = (link) => {
   window.open(link, '_blank')
 }
 
+const getMealDetail = async () => {
+  await store.getMealDetail(route.params.id)
+  meal.value = store.meal
+}
+
 // Fetch meal details from the API on component mount
 onMounted(async () => {
-  try {
-    const response = await axiosClient.get(`lookup.php?i=${route.params.id}`)
-    const data = response.data
-
-    // Check if data.meals[0] exists, otherwise set an empty object as the default value
-    meal.value = data.meals[0] || {}
-  } catch (error) {
-    console.error('An error occurred while fetching meal details:', error)
-  }
+  getMealDetail()
 })
 </script>
 <style lang="scss" scoped>
